@@ -1,0 +1,14 @@
+[
+  {
+    "change_type": "frequency_changed",
+    "description": "Daily billing frequency changed from 1 to 2 procedures per patient per day.",
+    "old_value": 1,
+    "new_value": 2
+  },
+  {
+    "change_type": "authorization_scope_changed",
+    "description": "Authorization requirement changed from all patients to patients age 18 and older.",
+    "old_value": "all patients",
+    "new_value": "patients age 18 and older"
+  }
+]

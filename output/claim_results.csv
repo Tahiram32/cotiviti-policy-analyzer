@@ -1,0 +1,5 @@
+claim_id,patient_id,procedure_code,units,status,reason
+CLAIM-001,PAT-001,HC100,1,PASS,
+CLAIM-002,PAT-002,HC100,3,FLAGGED,Daily unit limit exceeded
+CLAIM-003,PAT-003,HC100,1,FLAGGED,Missing prior authorization
+CLAIM-004,PAT-004,HC100,2,PASS,

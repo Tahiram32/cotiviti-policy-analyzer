@@ -1,0 +1,7 @@
+{
+  "procedure_code": "HC100",
+  "maximum_daily_units": 2,
+  "authorization_required": true,
+  "authorization_minimum_age": 18,
+  "source_policy_sentence": "Prior authorization is required for patients age 18 and older."
+}

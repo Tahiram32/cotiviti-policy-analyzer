@@ -42,9 +42,31 @@ cotiviti-policy-analyzer/
 
 ## How to Run
 
-The Python proof of concept will be run with:
+Run the proof of concept from the repository root:
 
 ```bash
 python3 policy_analyzer.py
 ```
 
+The script reads:
+
+- `data/policy_v1.txt`
+- `data/policy_v2.txt`
+- `data/sample_claims.csv`
+
+The script generates:
+
+- `output/policy_changes.json`
+- `output/extracted_rules.json`
+- `output/claim_results.csv`
+
+## Current Demo Scenario
+
+The fictional policy update changes procedure `HC100` from once per patient per day to twice per patient per day. It also changes the prior authorization rule from all patients to patients age 18 and older.
+
+The sample claims demonstrate:
+
+- A passing claim
+- A claim flagged for exceeding the daily unit limit
+- A claim flagged for missing prior authorization
+- A minor patient claim that passes because the revised authorization rule applies only to patients age 18 and older
