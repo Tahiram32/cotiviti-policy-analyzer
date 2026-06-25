@@ -1,0 +1,3 @@
+Procedure HC100 may be billed twice per patient per day.
+Prior authorization is required for patients age 18 and older.
+

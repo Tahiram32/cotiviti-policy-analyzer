@@ -1,0 +1,3 @@
+Procedure HC100 may be billed once per patient per day.
+Prior authorization is required.
+

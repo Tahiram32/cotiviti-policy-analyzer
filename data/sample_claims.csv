@@ -1,0 +1,6 @@
+claim_id,patient_id,patient_age,procedure_code,service_date,units,prior_authorization
+CLAIM-001,PAT-001,42,HC100,2026-01-15,1,yes
+CLAIM-002,PAT-002,35,HC100,2026-01-15,3,yes
+CLAIM-003,PAT-003,20,HC100,2026-01-16,1,no
+CLAIM-004,PAT-004,12,HC100,2026-01-16,2,no
+
