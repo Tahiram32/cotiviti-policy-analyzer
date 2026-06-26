@@ -8,9 +8,9 @@ Automated Healthcare Policy Change Analyzer: Converting Written Billing Policies
 
 ## Purpose
 
-The project demonstrates how a simple Python program can compare two fictional healthcare billing policy versions, identify policy changes, convert written requirements into structured JSON rules, and test synthetic healthcare claims against those rules.
+The project demonstrates how a simple Python program can compare two sample healthcare billing policy versions, identify policy changes, turn written requirements into structured JSON rules, and test sample claim data against those rules.
 
-All policies and claims in this repository are fictional. No real patient information is used.
+All policies and claims in this repository are sample data. No real patient information is used.
 
 ## Repository Structure
 
@@ -24,21 +24,23 @@ cotiviti-policy-analyzer/
 │   ├── policy_v2.txt
 │   └── sample_claims.csv
 ├── output/
-│   └── .gitkeep
+│   ├── policy_changes.json
+│   ├── extracted_rules.json
+│   └── claim_results.csv
 ├── report/
-│   └── .gitkeep
+│   └── Cotiviti_Intern_Report.docx
 ├── presentation/
 │   └── .gitkeep
 └── video/
     └── .gitkeep
 ```
 
-## Planned Deliverables
+## Deliverables
 
 - Word report
 - Python proof of concept
-- PowerPoint presentation
-- MP4 presentation recording
+- PowerPoint presentation, to be added
+- MP4 presentation recording, to be added
 
 ## How to Run
 
@@ -62,7 +64,7 @@ The script generates:
 
 ## Current Demo Scenario
 
-The fictional policy update changes procedure `HC100` from once per patient per day to twice per patient per day. It also changes the prior authorization rule from all patients to patients age 18 and older.
+The sample policy update changes procedure `HC100` from once per patient per day to twice per patient per day. It also changes the prior authorization rule from all patients to patients age 18 and older.
 
 The sample claims demonstrate:
 
@@ -70,3 +72,5 @@ The sample claims demonstrate:
 - A claim flagged for exceeding the daily unit limit
 - A claim flagged for missing prior authorization
 - A minor patient claim that passes because the revised authorization rule applies only to patients age 18 and older
+
+The extracted rules also include the policy sentence each rule came from, a confidence score, and a review status.
