@@ -200,6 +200,13 @@ def main() -> None:
     print("Generated output/policy_changes.json")
     print("Generated output/extracted_rules.json")
     print("Generated output/claim_results.csv")
+    print()
+    print("Claim Results")
+    for result in claim_results:
+        if result["status"] == "PASS":
+            print(f"{result['claim_id']}: PASS")
+        else:
+            print(f"{result['claim_id']}: FLAGGED - {result['reason']}")
 
 
 if __name__ == "__main__":
