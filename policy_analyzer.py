@@ -31,6 +31,13 @@ def read_policy(filename: str) -> str:
     return (DATA_DIR / filename).read_text(encoding="utf-8").strip()
 
 
+def find_sentence(policy_text: str, phrase: str) -> str:
+    for sentence in re.split(r"(?<=\.)\s+", policy_text.strip()):
+        if phrase.lower() in sentence.lower():
+            return sentence
+    return ""
+
+
 def extract_rules(policy_text: str) -> dict:
     """Extract a small rules object from the fictional policy language."""
     procedure_match = re.search(r"Procedure\s+([A-Z]{2}\d{3})", policy_text)
@@ -48,17 +55,31 @@ def extract_rules(policy_text: str) -> dict:
         raise ValueError(f"Unsupported frequency wording: {frequency_text}")
 
     authorization_required = "prior authorization is required" in policy_text.lower()
+    frequency_sentence = find_sentence(policy_text, "may be billed")
+    authorization_sentence = find_sentence(policy_text, "prior authorization is required")
 
     return {
         "procedure_code": procedure_match.group(1),
         "maximum_daily_units": maximum_daily_units,
         "authorization_required": authorization_required,
         "authorization_minimum_age": int(age_match.group(1)) if age_match else None,
-        "source_policy_sentence": (
-            "Prior authorization is required for patients age 18 and older."
-            if age_match
-            else "Prior authorization is required."
-        ),
+        "rules": [
+            {
+                "rule_name": "daily_unit_limit",
+                "value": maximum_daily_units,
+                "source_sentence": frequency_sentence,
+                "confidence_score": 0.95,
+                "review_status": "needs_human_review",
+            },
+            {
+                "rule_name": "prior_authorization",
+                "required": authorization_required,
+                "minimum_age": int(age_match.group(1)) if age_match else None,
+                "source_sentence": authorization_sentence,
+                "confidence_score": 0.95,
+                "review_status": "needs_human_review",
+            },
+        ],
     }
 
 
@@ -138,7 +159,7 @@ def validate_claims(rules: dict) -> list[dict]:
                     "procedure_code": claim["procedure_code"],
                     "units": claim["units"],
                     "status": "FLAGGED" if reasons else "PASS",
-                    "reason": "; ".join(reasons),
+                    "reason": "; ".join(reasons) if reasons else "Meets extracted policy rules",
                 }
             )
 

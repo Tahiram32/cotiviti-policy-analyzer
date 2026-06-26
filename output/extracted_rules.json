@@ -3,5 +3,21 @@
   "maximum_daily_units": 2,
   "authorization_required": true,
   "authorization_minimum_age": 18,
-  "source_policy_sentence": "Prior authorization is required for patients age 18 and older."
+  "rules": [
+    {
+      "rule_name": "daily_unit_limit",
+      "value": 2,
+      "source_sentence": "Procedure HC100 may be billed twice per patient per day.",
+      "confidence_score": 0.95,
+      "review_status": "needs_human_review"
+    },
+    {
+      "rule_name": "prior_authorization",
+      "required": true,
+      "minimum_age": 18,
+      "source_sentence": "Prior authorization is required for patients age 18 and older.",
+      "confidence_score": 0.95,
+      "review_status": "needs_human_review"
+    }
+  ]
 }
